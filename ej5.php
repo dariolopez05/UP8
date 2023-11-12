@@ -101,26 +101,32 @@ $data = [
     ["nombre" => "TaShya", "peso" => 3, "edad" => 6],
     ["nombre" => "Daphne", "peso" => 7, "edad" => 13],
 ];
-$sobrepeso = 0;
 
-function obesos($s1){
-    for ($i=0; $i < count($data); $i++) { 
-        if ($data[$i][$edad]*7 > 60) {
-            if ($data[$i][$edad] >= 7) {
-                $s1++;
-            }
-        } elseif ($data[$i][$edad]*7 < 40) {
-            if ($data[$i][$edad] >= 3) {
-                $s1++;
-            }
-        } else {
-            if ($data[$i][$edad] >= 6) {
-                $s1++;
-        }
-    }
-    echo $s1;
+
+$total = count($data);
+$porc = sobrepeso($data)*100/$total;
+
+echo "En total hay ", sobrepeso($data), " perros con panza.";
+echo "<br> Son un total del ", $porc, "%";
+
+function edadhumana($e1): float{
+    return 31+16*log($e1);
 }
 
-obesos($sobrepeso);
+function sobrepeso($array): int{
+    $panzas = 0;
+    foreach ($array as $chucho) {
+        $edad = edadhumana($chucho['edad']);
+        $peso = $chucho['peso'];
+        if ($edad > 60 && $peso > 7) {
+            $panzas++;
+        } elseif ($edad < 40 && $peso > 3) {
+            $panzas++;
+        } elseif($peso > 6) {
+            $panzas++;
+        }
+    }
+    return $panzas;
+}
 
 ?>

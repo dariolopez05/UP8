@@ -2,20 +2,20 @@
 $num1 = 1;
 $num2 = 49;
 $arr = [];
+$contador = 0;
 
 function func($n1, $n2){
     return random_int($n1, $n2);
 }
 
-for ($i=0; $i < 6;) { 
-    if (in_array(func($num1, $num2), $arr)) {
-        $i;
-    } else {
-        array_push($arr, func($num1, $num2));
-        $i++;
+while ($contador < 6) {
+    $num = func($num1, $num2);
+    if (!in_array($num, $arr)){
+        array_push($arr, $num);
+        $contador++;
     }
 }
 
-var_dump($arr);
+echo implode("-", $arr)
 
 ?>

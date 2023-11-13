@@ -16,7 +16,6 @@
             $contador = 0;
             $suma = 1;
             while ($contador < $num) {
-                $cont = 1;
                 for ($i=0; $i < $suma; $i++) { 
                     echo $car;
                 }
@@ -27,7 +26,6 @@
             $suma-=4;
             $contador = 0;
             while ($contador < $num) {
-                $cont = 1;
                 for ($i=0; $i < $suma; $i++) { 
                     echo $car;
                 }
